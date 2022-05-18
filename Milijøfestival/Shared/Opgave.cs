@@ -3,11 +3,7 @@ namespace Milijøfestival.Shared
 {
     public class Opgave
     {
-        public Opgave()
-        {
-
-        }
-        //propertes
+        //properties
         public int OpgId { get; set; }
 
         public string OpgBeskrivelse { get; set; }
@@ -19,7 +15,7 @@ namespace Milijøfestival.Shared
         public Opgave(int opgid, string opgbeskrivelse, int antalvagter)
         {
             OpgId = opgid;
-            opgbeskrivelse = opgbeskrivelse;
+            OpgBeskrivelse = opgbeskrivelse;
             AntalVagter = antalvagter;
         }
     }

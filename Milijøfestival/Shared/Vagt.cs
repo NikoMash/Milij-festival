@@ -3,8 +3,7 @@ namespace Milijøfestival.Shared
 {
     public class Vagt
     {
-        //Properties
-
+        //properties
         public int VagtId { get; set; }
 
         public DateTime Tid { get; set; }
@@ -14,7 +13,7 @@ namespace Milijøfestival.Shared
         public string Afdeling { get; set; }
 
 
-        //Constructer
+        //constructer
         public Vagt(int vagtid, DateTime tid, string sted, string afdeling)
         {
             VagtId = vagtid;
@@ -22,7 +21,5 @@ namespace Milijøfestival.Shared
             Sted = sted;
             Afdeling = afdeling;
         }
-
     }
-
 }

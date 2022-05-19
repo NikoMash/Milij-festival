@@ -15,10 +15,6 @@
     <ProjectReference Include="..\Shared\Milijøfestival.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <None Remove="Dapper" />

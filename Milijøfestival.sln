@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Milijøfestival.Server", "Milijøfestival\Server\Milijøfestival.Server.csproj", "{F4CB52FB-E19F-4B15-8AE6-A61782423916}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Milijøfestival.Server", "Milijøfestival\Server\Milijøfestival.Server.csproj", "{F4CB52FB-E19F-4B15-8AE6-A61782423916}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Milijøfestival.Client", "Milijøfestival\Client\Milijøfestival.Client.csproj", "{2F21B0D5-D05C-48C4-8F60-C674D06F6BCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Milijøfestival.Client", "Milijøfestival\Client\Milijøfestival.Client.csproj", "{2F21B0D5-D05C-48C4-8F60-C674D06F6BCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Milijøfestival.Shared", "Milijøfestival\Shared\Milijøfestival.Shared.csproj", "{AA071B37-97EF-40C3-8265-4FDF45D0782A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Milijøfestival.Shared", "Milijøfestival\Shared\Milijøfestival.Shared.csproj", "{AA071B37-97EF-40C3-8265-4FDF45D0782A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

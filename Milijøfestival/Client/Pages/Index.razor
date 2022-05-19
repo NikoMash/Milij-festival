@@ -1,7 +1,15 @@
-﻿@page "/"
+﻿@using Milijøfestival.Shared
+@inject IHentVagtData HentVagtData
 
-<h1>Hello, world!</h1>
+<h3>Bookingside</h3>
+@foreach(var v in vagter)
+{
+    Console.WriteLine($"{v.Sted}");
+}
 
-Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+@code {
+    List<Vagt> vagter;
+}

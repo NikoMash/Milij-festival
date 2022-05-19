@@ -3,8 +3,7 @@ namespace Milijøfestival.Shared
 {
     public class Booking
     {
-
-        //constructor
+        public int BookingId { get; set; }
         public Booking()
         {
         }

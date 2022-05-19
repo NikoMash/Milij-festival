@@ -1,11 +1,11 @@
 ﻿using System;
 namespace Milijøfestival.Shared
 {
-    public class Koordinator
+    public class Koordinator : Bruger
     {
+        //properties 
 
-        //constructor
-        public Koordinator()
+        public Koordinator(int brugerid, string navn, char telefonnr, string email, int alder) : base (brugerid, navn, telefonnr, email, alder)
         {
         }
     }

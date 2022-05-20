@@ -30,15 +30,20 @@ namespace Milijøfestival.Server.Controllers
             connection.Open();
 
             //Henter en liste af vagter (SELECT / Read)
-            var selectstedvagter = "SELECT * FROM vagt";
+            var selectallvagter = "SELECT * FROM vagt";
             IEnumerable<Vagt> vagter;
             using (connection)
             
-                 vagter = await connection.QueryAsync<Vagt>(selectstedvagter);
+                 vagter = await connection.QueryAsync<Vagt>(selectallvagter);
            
             return vagter.ToList();
         }
 
+        //Opret en vagt (Create)
+        public async Task Add(Vagt vagt)
+        {
+            var opretvagt = "INSERT INTO vagt (tid, sted, opgid)
+        }
 
     }
 }

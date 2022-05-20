@@ -1,11 +1,8 @@
 ﻿@using Milijøfestival.Shared
-@inject IHentVagtData HentVagtData
-
+@inject HttpClient Http
+@page "/Vagtoversigt"
 <h3>Bookingside</h3>
-@foreach(var v in vagter)
-{
-    Console.WriteLine($"{v.Sted}");
-}
+
 
 
 
@@ -13,8 +10,8 @@
 @code {
     List<Vagt> vagter;
 
-    protected override async Task OnInitializedAzync()
+    protected override async Task OnInitializedAsync()
     {
-        vagter = await 
+        vagter = await Http.GetFromJsonAsync<List<Vagt>>("HentVagter");
     }
 }

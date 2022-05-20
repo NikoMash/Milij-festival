@@ -14,22 +14,15 @@ namespace Milijøfestival.Shared
     {
 
 
-        private readonly SqlConnectionConfiguration _configuration;
-        public HentVagtData(SqlConnectionConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-        //Henter en liste af vagter (Select / Read)
+       
+        //Henter en liste af vagter (SELECT / Read)
         public async Task<IEnumerable<Vagt>> VagtList()
         {
-            var selectstedvagter = "Select sted FROM vagt";
+            var selectstedvagter = "SELECT * FROM vagt";
             IEnumerable<Vagt> vagter;
             using (var connection = new NpgsqlConnection("SuperUser"))
             {
                 vagter = await connection.QueryAsync<Vagt>(selectstedvagter);
-                /*
-            ("spVagt_GetAll", commandType: CommandType.StoredProcedure);
-                */
             }
             return vagter.ToList();
         }

@@ -22,18 +22,20 @@ namespace Milijøfestival.Server.Controllers
 
         
         
-        //Henter en liste af vagter (SELECT / Read)
+     //Åben connection til azure server
         [HttpGet]
         public async Task<IEnumerable<Vagt>> Get()
         {
-            NpgsqlConnection connection = new NpgsqlConnection("SuperUser");
+            NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
             connection.Open();
+
+            //Henter en liste af vagter (SELECT / Read)
             var selectstedvagter = "SELECT * FROM vagt";
-            IEnumerable<Vagt> vagter = null;
-            /*using (connection)
-            {*/
+            IEnumerable<Vagt> vagter;
+            using (connection)
+            
                  vagter = await connection.QueryAsync<Vagt>(selectstedvagter);
-            //}
+           
             return vagter.ToList();
         }
 

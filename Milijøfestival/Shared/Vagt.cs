@@ -8,7 +8,7 @@ namespace Milijøfestival.Shared
 
         public DateTime Tid { get; set; }
 
-        public string Sted { get; set; }
+        public string? Sted { get; set; }
 
         public int OpgId { get; set; }
 

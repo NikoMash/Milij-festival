@@ -3,12 +3,17 @@
 @page "/Vagtoversigt"
 <h3>Bookingside</h3>
 
-
+<body>
+@foreach (var v in vagter)
+{
+    <p>@v.Sted</p>
+}
+</body>
 
 
 
 @code {
-    List<Vagt> vagter;
+    List<Vagt> vagter = new List<Vagt>();
 
     protected override async Task OnInitializedAsync()
     {

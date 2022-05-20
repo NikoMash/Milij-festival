@@ -10,16 +10,16 @@ namespace Milijøfestival.Shared
 
         public string Sted { get; set; }
 
-        public string Afdeling { get; set; }
+        public int OpgId { get; set; }
 
 
         //constructer
-        public Vagt(int vagtid, DateTime tid, string sted, string afdeling)
+        public Vagt(int vagtid, DateTime tid, string sted, int opgid)
         {
             VagtId = vagtid;
             Tid = tid;
             Sted = sted;
-            Afdeling = afdeling;
+            OpgId = opgid;
         }
     }
 }

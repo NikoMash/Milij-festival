@@ -15,6 +15,8 @@ namespace Milijøfestival.Shared
 
         public int OpgId { get; set; }
 
+        public bool ErTaget { get; set; }
+
 
         //constructer
     }

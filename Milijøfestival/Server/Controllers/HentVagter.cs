@@ -42,7 +42,16 @@ namespace Milijøfestival.Server.Controllers
         //Opret en vagt (Create)
         public async Task Add(Vagt vagt)
         {
-            var opretvagt = "INSERT INTO vagt (tid, sted, opgid)
+            NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
+            connection.Open();
+            string opretvagt = "INSERT INTO vagt (Tid, Sted, OpgId) VALUES (@tid, @sted, @opgid)";
+            var vagtArgumenter = new
+            {
+                tid = vagt.Tid,
+                sted = vagt.Sted,
+                opgid = vagt.OpgId
+            };
+            await connection.ExecuteAsync(opretvagt, vagtArgumenter); 
         }
 
     }

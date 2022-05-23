@@ -1,14 +1,19 @@
 ﻿@using Milijøfestival.Shared
 @inject HttpClient Http
 @page "/Vagtoversigt"
-<h3>Bookingside</h3>
-
-<body>
+<h3>Vagtoversigt</h3>
+<table class="table">
+<tbody>
 @foreach (var v in vagter)
 {
-    <p>@v.Sted</p>
+    <tr>
+         <td>@v.Sted</td>
+         <td>@v.StartTid</td>
+         <td>@v.SlutTid</td>
+    </tr>
 }
-</body>
+</tbody>
+</table>
 
 
 

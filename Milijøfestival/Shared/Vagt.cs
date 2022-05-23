@@ -17,6 +17,7 @@ namespace Milijøfestival.Shared
 
         public bool ErTaget { get; set; }
 
+      
 
         //constructer
     }

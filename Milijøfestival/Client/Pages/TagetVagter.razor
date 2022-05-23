@@ -1,0 +1,22 @@
+﻿@using Milijøfestival.Shared
+@inject HttpClient Http
+@page "/TagetVagter"
+<h3>Taget vagter</h3>
+
+<body>
+    @foreach (var tv in tagetvagter)
+    {
+        <p>@tv.Sted</p>
+    }
+</body>
+
+
+
+@code {
+    List<Vagt> tagetvagter = new List<Vagt>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        tagetvagter = await Http.GetFromJsonAsync<List<Vagt>>("HentTagetVagter");
+    }
+}

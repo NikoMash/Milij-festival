@@ -10,6 +10,7 @@ namespace Milijøfestival.Shared
         public string Email { get; set; }
         public int Alder { get; set; }
 
+
         //Constructor
         public Bruger(int brugerid, string navn, char telefonnr, string email, int alder)
         {

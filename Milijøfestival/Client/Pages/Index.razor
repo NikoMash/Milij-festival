@@ -6,44 +6,54 @@
 <h3>Opret Vagt</h3>
    
    <th>Indtast nødvendig info:</th>
+   <table class="table">
+       <tr>
+          
 <div class=" row">
+    <td>
     <div class="col-md-6">
         <div class="form-group">
             <label for="StartTid"> Start tidspunkt</label>
             <input type="datetime" @bind="@nyvagt.StartTid" />
         </div>
     </div>
-
+    </td>
+    <td>
     <div class="col-md-6">
         <div class="form-group">
             <label for="SlutTid"> Slut tidspunkt</label>
             <input type="datetime" @bind="@nyvagt.SlutTid" />
         </div>
     </div>
-
+    </td>
+    <td>
     <div class="col-md-6">
         <div class="form-group">
             <label for="Sted">Hvilken afdeling</label>
             <input type="string" @bind="@nyvagt.Afdeling" />
         </div>
     </div>
-
+    </td>
+    <td>
     <div class="col-md-6">
         <div class="form-group">
             <label for="Sted">Hvor er vagten</label>
             <input type="string" @bind="@nyvagt.Sted" />
         </div>
     </div>
-
-
+    </td>
+    <td>
     <div class="col-md-6">
         <div class="form-group">
             <label for="OpgId">Opgave id</label>
             <input type="int" @bind="@nyvagt.OpgId" />
         </div>
     </div>
+    </td>
      <td><button class="btn btn-primary"@onclick="()=>save(nyvagt.StartTid, nyvagt.SlutTid, nyvagt.Afdeling, nyvagt.Sted, nyvagt.OpgId)">Opret vagt</button></td>
 </div> 
+</tr>
+</table>
 
 
 

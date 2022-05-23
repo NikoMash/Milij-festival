@@ -2,14 +2,23 @@
 @inject HttpClient Http
 @page "/Vagtoversigt"
 <h3>Vagtoversigt</h3>
-
-<body>
+<table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Hvor</th>
+      <th scope="col">Fra</th>
+      <th scope="col">Til</th>
+      <th scope="col">Book</th>
+    </tr>
+  </thead>
+<tbody>
 @foreach (var v in vagter)
 {
     <tr>
-         <td>@v.Sted</td>
-         <td>@v.StartTid</td>
-         <td>@v.SlutTid</td>
+         <th>@v.Sted</th>
+         <th>@v.StartTid</th>
+         <th>@v.SlutTid</th>
+         <th><button class btn-primaty>Vælg</button></th>
     </tr>
 }
 </tbody>

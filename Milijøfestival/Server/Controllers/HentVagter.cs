@@ -23,7 +23,7 @@ namespace Milijøfestival.Server.Controllers
         
         
      //Åben connection til azure server
-        [HttpGet]
+        
         public async Task<IEnumerable<Vagt>> Get()
         {
             NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
@@ -44,10 +44,11 @@ namespace Milijøfestival.Server.Controllers
         {
             NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
             connection.Open();
-            string opretvagt = "INSERT INTO vagt (Tid, Sted, OpgId) VALUES (@tid, @sted, @opgid)";
+            string opretvagt = "INSERT INTO vagt (starttid, sluttid, sted, opgid) VALUES (@starttid, @sluttid, @sted, @opgid)";
             var vagtArgumenter = new
             {
-                tid = vagt.Tid,
+                starttid = vagt.StartTid,
+                sluttid = vagt.SlutTid,
                 sted = vagt.Sted,
                 opgid = vagt.OpgId
             };

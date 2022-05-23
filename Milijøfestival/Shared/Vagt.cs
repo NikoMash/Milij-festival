@@ -4,9 +4,12 @@ namespace Milijøfestival.Shared
     public class Vagt
     {
         //properties
-        public int VagtId { get; set; }
+        
+        public DateTime StartTid { get; set; }
 
-        public DateTime Tid { get; set; }
+        public DateTime SlutTid { get; set; }
+
+        public string? Afdeling { get; set; }
 
         public string? Sted { get; set; }
 
@@ -14,12 +17,17 @@ namespace Milijøfestival.Shared
 
 
         //constructer
-        public Vagt(int vagtid, DateTime tid, string sted, int opgid)
+        public Vagt(DateTime starttid, DateTime sluttid, string sted, int opgid)
         {
-            VagtId = vagtid;
-            Tid = tid;
+            StartTid = starttid;
+            SlutTid = sluttid;
             Sted = sted;
             OpgId = opgid;
+        }
+
+        public Vagt()
+        {
+
         }
     }
 }

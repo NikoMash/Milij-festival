@@ -30,7 +30,7 @@ namespace Milijøfestival.Server.Controllers
         {
 
             connection.Open();
-            var selectallertaget = "SELECT * FROM tagetvagter WHERE ertaget = true";
+            var selectallertaget = "SELECT * FROM tagetvagter";
             IEnumerable<Vagt> tagetvagter;
 
             tagetvagter = await connection.QueryAsync<Vagt>(selectallertaget);

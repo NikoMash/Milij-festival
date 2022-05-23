@@ -17,17 +17,5 @@ namespace Milijøfestival.Shared
 
 
         //constructer
-        public Vagt(DateTime starttid, DateTime sluttid, string sted, int opgid)
-        {
-            StartTid = starttid;
-            SlutTid = sluttid;
-            Sted = sted;
-            OpgId = opgid;
-        }
-
-        public Vagt()
-        {
-
-        }
     }
 }

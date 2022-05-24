@@ -26,14 +26,14 @@ namespace Milijøfestival.Server.Controllers
         NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
 
         //Henter en liste af frivillige (SELECT / Read)
-        public async Task<IEnumerable<Frivillig>> Get()
+        public async Task<IEnumerable<FrivilligOversigtView>> Get()
         {
 
             connection.Open();
             var selectallfrivillige = "SELECT * FROM frivilligoversigt";
-            IEnumerable<Frivillig> frivillige;
+            IEnumerable<FrivilligOversigtView> frivillige;
 
-            frivillige = await connection.QueryAsync<Frivillig>(selectallfrivillige);
+            frivillige = await connection.QueryAsync<FrivilligOversigtView>(selectallfrivillige);
 
             return frivillige.ToList();
         }

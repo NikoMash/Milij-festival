@@ -3,26 +3,43 @@
 @page "/Frivilligoversigt"
 <h3>Frivilligoversigt</h3>
 
-<body>
-    @foreach (var fo in frivillige)
-    {
-        <p>@fo.Navn</p>
-        <p>@fo.TelefonNr</p>
-        <p>@fo.Email</p>
-        <p>@fo.Fødselsdato</p>
-     
 
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Navn</th>
+            <th scope="col">TelefonNr</th>
+            <th scope="col">Email</th>
+            <th scope="col">Fødselsdato</th>
+            <th scope="col">RolleNavn</th>
+            <th scope="col">Kompetence</th>
 
-    }
-</body>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var fo in tagetfrivillige)
+        {
+            <tr>
+                <th>@fo.Navn</th>
+                <th>@fo.TelefonNr</th>
+                <th>@fo.Email</th>
+                <th>@fo.Fødselsdato</th>
+                <th>@fo.RolleNavn</th>
+                <th>@fo.Kompetence</th>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
 
 
 
 @code {
-    List<Frivillig> frivillige = new List<Frivillig>();
+    List<FrivilligOversigtView> tagetfrivillige = new List<FrivilligOversigtView>();
 
     protected override async Task OnInitializedAsync()
     {
-        frivillige = await Http.GetFromJsonAsync<List<Frivillig>>("Frivilligoversigt");
+        tagetfrivillige = await Http.GetFromJsonAsync<List<FrivilligOversigtView>>("HentFrivillige");
     }
 }

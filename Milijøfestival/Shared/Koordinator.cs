@@ -6,7 +6,7 @@ namespace Milijøfestival.Shared
     {
         //properties 
 
-        public Koordinator(int brugerid, string navn, char telefonnr, string email, DateTime fødselsdato) : base (brugerid, navn, telefonnr, email, fødselsdato)
+        public Koordinator(int brugerid, string navn, char telefonnr, string email, DateTime fødselsdato, int rolleid) : base (brugerid, navn, telefonnr, email, fødselsdato, rolleid)
         {
         }
     }

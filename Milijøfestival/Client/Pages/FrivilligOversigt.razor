@@ -1,0 +1,45 @@
+﻿@using Milijøfestival.Shared
+@inject HttpClient Http
+@page "/Frivilligoversigt"
+<h3>Oversigt over frivillige</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Navn</th>
+            <th scope="col">Telefonnr</th>
+            <th scope="col">Email</th>
+            <th scope="col">Fødselsdato</th>
+            <th scope="col">Rollenavn</th>
+            <th scope="col">Kompetence</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var fo in frivillige)
+        {
+            <tr>
+                <th>@fo.Navn</th>
+                <th>@fo.TelefonNr</th>
+                <th>@fo.Email</th>
+                <th>@fo.Fødselsdato</th>
+                <th>@fo.RolleNavn</th>
+                <th>@fo.Kompetence</th>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+@code {
+    List<FrivilligOversigtView> frivillige = new List<FrivilligOversigtView>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        frivillige = await Http.GetFromJsonAsync<List<FrivilligOversigtView>>("HentFrivillige");
+    }
+}

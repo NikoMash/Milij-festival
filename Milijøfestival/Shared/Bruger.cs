@@ -8,16 +8,20 @@ namespace Milijøfestival.Shared
         public string Navn { get; set; }
         public char TelefonNr { get; set; }
         public string Email { get; set; }
-        public int Alder { get; set; }
+        public DateTime Fødselsdato { get; set; }
+        public int RolleId { get; set; }
+
+
 
         //Constructor
-        public Bruger(int brugerid, string navn, char telefonnr, string email, int alder)
+        public Bruger(int brugerid, string navn, char telefonnr, string email, DateTime fødselsdato, int rolleid)
         {
             BrugerId = brugerid; 
             Navn = navn;    
             TelefonNr = telefonnr;
             Email = email;
-            Alder = alder;
+            Fødselsdato = fødselsdato;
+            RolleId = rolleid;
         }
 
 

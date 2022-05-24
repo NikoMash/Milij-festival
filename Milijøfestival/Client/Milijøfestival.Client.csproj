@@ -26,4 +26,7 @@
   <ItemGroup>
     <None Remove="Dapper" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Pages\Bookingside.razor" />
+  </ItemGroup>
 </Project>

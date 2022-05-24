@@ -1,9 +1,9 @@
 ﻿@using Milijøfestival.Shared
-@page "/g"
+@page "/Opretvagt"
 @inject HttpClient Http
 
 
-<h3>Opret Vagt</h3>
+<h3>Opret vagt</h3>
    
    <th>Indtast nødvendig info:</th>
    <table class="table">
@@ -68,6 +68,7 @@
         nyvagt.Afdeling = afdeling;
         nyvagt.Sted = sted;
         nyvagt.OpgId = opgid;
+      
 
         var response = await Http.PutAsJsonAsync<Vagt>("Vagt", nyvagt);
     }

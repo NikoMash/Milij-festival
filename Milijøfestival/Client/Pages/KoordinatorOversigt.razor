@@ -1,0 +1,45 @@
+﻿@using Milijøfestival.Shared
+@inject HttpClient Http
+@page "/Koordinatoroversigt"
+<h3>Oversigt over koordinatorer</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Navn</th>
+            <th scope="col">Telefonnr</th>
+            <th scope="col">Email</th>
+            <th scope="col">Fødselsdato</th>
+            <th scope="col">Rollenavn</th>
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ko in koordinatoroversigt)
+        {
+            <tr>
+                <th>@ko.Navn</th>
+                <th>@ko.TelefonNr</th>
+                <th>@ko.Email</th>
+                <th>@ko.Fødselsdato</th>
+                <th>@ko.RolleNavn</th>
+                
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+@code {
+    List<KoordinatorOversigtView> koordinatoroversigt = new List<KoordinatorOversigtView>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        koordinatoroversigt = await Http.GetFromJsonAsync<List<KoordinatorOversigtView>>("HentKoordinatorer");
+    }
+}

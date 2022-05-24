@@ -1,23 +1,23 @@
 ﻿@using Milijøfestival.Shared
 @inject HttpClient Http
 @page "/Frivilligoversigt"
-<h3>Frivilligoversigt</h3>
+<h3>Oversigt over frivillige</h3>
 
 
 <table class="table">
     <thead>
         <tr>
             <th scope="col">Navn</th>
-            <th scope="col">TelefonNr</th>
+            <th scope="col">Telefonnr</th>
             <th scope="col">Email</th>
             <th scope="col">Fødselsdato</th>
-            <th scope="col">RolleNavn</th>
+            <th scope="col">Rollenavn</th>
             <th scope="col">Kompetence</th>
 
         </tr>
     </thead>
     <tbody>
-        @foreach (var fo in tagetfrivillige)
+        @foreach (var fo in frivillige)
         {
             <tr>
                 <th>@fo.Navn</th>
@@ -36,10 +36,10 @@
 
 
 @code {
-    List<FrivilligOversigtView> tagetfrivillige = new List<FrivilligOversigtView>();
+    List<FrivilligOversigtView> frivillige = new List<FrivilligOversigtView>();
 
     protected override async Task OnInitializedAsync()
     {
-        tagetfrivillige = await Http.GetFromJsonAsync<List<FrivilligOversigtView>>("HentFrivillige");
+        frivillige = await Http.GetFromJsonAsync<List<FrivilligOversigtView>>("HentFrivillige");
     }
 }

@@ -9,6 +9,7 @@
       <th scope="col">Fra</th>
       <th scope="col">Til</th>
       <th scope="col">Book</th>
+      <th scope="col">Fjern</th>
     </tr>
   </thead>
 <tbody>
@@ -19,6 +20,7 @@
          <th>@v.StartTid</th>
          <th>@v.SlutTid</th>
          <th><button class="btn btn-primary"@onclick="()=>save(v.VagtId)">Vælg</button></th>
+         <th><button class="btn btn-primary">Fjern vagt</button></th>
     </tr>
 }
 </tbody>

@@ -1,0 +1,28 @@
+﻿@using Milijøfestival.Shared
+@inject HttpClient Http
+@page "/Frivilligoversigt"
+<h3>Frivilligoversigt</h3>
+
+<body>
+    @foreach (var fo in frivillige)
+    {
+        <p>@fo.Navn</p>
+        <p>@fo.TelefonNr</p>
+        <p>@fo.Email</p>
+        <p>@fo.Fødselsdato</p>
+     
+
+
+    }
+</body>
+
+
+
+@code {
+    List<Frivillig> frivillige = new List<Frivillig>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        frivillige = await Http.GetFromJsonAsync<List<Frivillig>>("Frivilligoversigt");
+    }
+}

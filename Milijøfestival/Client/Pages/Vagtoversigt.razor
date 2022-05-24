@@ -18,7 +18,7 @@
          <th>@v.Sted</th>
          <th>@v.StartTid</th>
          <th>@v.SlutTid</th>
-         <th><button class btn-primaty>Vælg</button></th>
+         <th><button class="btn btn-primary"@onclick="()=>save(v.VagtId)">Vælg</button></th>
     </tr>
 }
 </tbody>
@@ -27,6 +27,15 @@
 
 
 @code {
+    Vagt vagttaget = new Vagt();
+
+    private async Task save(int vagtid)
+    {
+        vagttaget.VagtId = vagtid;
+        var response = await Http.PutAsJsonAsync<Vagt>("UpdateVagt", vagttaget);
+
+    }
+
     List<Vagt> vagter = new List<Vagt>();
 
     protected override async Task OnInitializedAsync()

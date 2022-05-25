@@ -22,13 +22,13 @@ namespace Milijøfestival.Server.Controllers
 
 
 
-        //Åben connection til azure server               
+        //Connection til database               
         NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
                     
         //Henter en liste af vagter (SELECT / Read)
         public async Task<IEnumerable<Vagt>> Get()
         {
-
+            
             connection.Open();           
             var selectallvagter = "SELECT * FROM vagt WHERE ertaget = false";
             IEnumerable<Vagt> vagter;

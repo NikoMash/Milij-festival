@@ -21,6 +21,7 @@ namespace Milijøfestival.Server.Controllers
 
         NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
 
+        //Lave en vagt (Create/INSERT)
         public async Task<ActionResult<Vagt>> PutTask(Vagt nyvagt)
         {
 

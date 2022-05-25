@@ -45,7 +45,7 @@
     private async Task save(int vagtid)
     {
         vagttaget.VagtId = vagtid;
-        var response = await Http.PutAsJsonAsync<Vagt>("UpdateVagt", vagttaget);
+        var response = await Http.PutAsJsonAsync<Vagt>("VælgVagt", vagttaget);
     }
 
     List<Vagt> vagter = new List<Vagt>();

@@ -15,6 +15,7 @@
       <th scope="col">Til</th>
       <th scope="col">Book</th>
       <th scope="col">Fjern</th>
+      <th scope="col">Rediger</th>
     </tr>
   </thead>
 <tbody>
@@ -26,6 +27,8 @@
          <th>@v.SlutTid</th>
          <th><button class="btn btn-primary"@onclick="()=>save(v.VagtId)">Vælg</button></th>
          <th><button class="btn btn-primary"@onclick="()=>save1(v.VagtId)">Fjern vagt</button></th>
+         <th><a href="rediger">Rediger</a></th>
+
     </tr>
 }
 </tbody>

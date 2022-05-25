@@ -4,7 +4,7 @@ namespace Milijøfestival.Shared
     public class Bruger
     {
         //properties
-        public int BrugerId { get; set; }
+        public int BrugerId { get; }
         public string Navn { get; set; }
         public char TelefonNr { get; set; }
         public string Email { get; set; }
@@ -12,11 +12,10 @@ namespace Milijøfestival.Shared
         public int RolleId { get; set; }
 
 
-
+        
         //Constructor
-        public Bruger(int brugerid, string navn, char telefonnr, string email, DateTime fødselsdato, int rolleid)
+        public Bruger(string navn, char telefonnr, string email, DateTime fødselsdato, int rolleid)
         {
-            BrugerId = brugerid; 
             Navn = navn;    
             TelefonNr = telefonnr;
             Email = email;
@@ -24,7 +23,11 @@ namespace Milijøfestival.Shared
             RolleId = rolleid;
         }
 
+        public Bruger()
+        {
 
+        }
+      
 
 
 

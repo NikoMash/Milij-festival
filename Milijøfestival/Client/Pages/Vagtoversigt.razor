@@ -20,7 +20,7 @@
          <th>@v.StartTid</th>
          <th>@v.SlutTid</th>
          <th><button class="btn btn-primary"@onclick="()=>save(v.VagtId)">Vælg</button></th>
-         <th><button class="btn btn-primary">Fjern vagt</button></th>
+         <th><button class="btn btn-primary"@onclick="()=>save1(v.VagtId)">Fjern vagt</button></th>
     </tr>
 }
 </tbody>
@@ -29,13 +29,18 @@
 
 
 @code {
-    Vagt vagttaget = new Vagt();
+    Vagt vagtslet = new Vagt();
+    private async Task save1(int vagtid1)
+    {
+        vagtslet.VagtId = vagtid1;
+        var response = await Http.PutAsJsonAsync<Vagt>("SletVagt", vagtslet);
+    }
 
+    Vagt vagttaget = new Vagt();
     private async Task save(int vagtid)
     {
         vagttaget.VagtId = vagtid;
         var response = await Http.PutAsJsonAsync<Vagt>("UpdateVagt", vagttaget);
-
     }
 
     List<Vagt> vagter = new List<Vagt>();

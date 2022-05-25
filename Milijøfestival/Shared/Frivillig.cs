@@ -10,7 +10,7 @@ namespace Milijøfestival.Shared
 
 
         //constructer
-        public Frivillig(int brugerid, string navn, char telefonnr, string email, DateTime fødselsdato, string kompetence, int rolleid) : base (brugerid, navn, telefonnr, email, fødselsdato, rolleid)
+        public Frivillig(string navn, char telefonnr, string email, DateTime fødselsdato, string kompetence, int rolleid) : base (navn, telefonnr, email, fødselsdato, rolleid)
         { 
 
             Kompetence = kompetence;

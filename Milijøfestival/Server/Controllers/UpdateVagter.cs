@@ -28,7 +28,7 @@ namespace Milijøfestival.Server.Controllers
                 connection.Open();
                 try
                 {
-                    string update = "UPDATE vagt SET sted = @sted, opgid =  @opgid, afdeling =  @afdeling, starttid = @starttid, sluttid = @sluttid WHERE vagtid = @vagtid";
+                    string update = "UPDATE vagt SET sted = @sted, opgid = @opgid, afdeling = @afdeling, starttid = @starttid, sluttid = @sluttid WHERE vagtid = @vagtid";
                     var vagtArgumenter = new
                     {
                         
@@ -36,7 +36,7 @@ namespace Milijøfestival.Server.Controllers
                         sted = updatevagt.Sted,
                         opgid = updatevagt.OpgId,
                         afdeling = updatevagt.Afdeling,
-                        startid = updatevagt.StartTid,
+                        starttid = updatevagt.StartTid,
                         sluttid = updatevagt.SlutTid
                     };
                     await connection.ExecuteAsync(update, vagtArgumenter);

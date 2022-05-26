@@ -1,0 +1,28 @@
+﻿@using Milijøfestival.Shared
+@page "/Opretopgave"
+@inject HttpClient Http
+<h3>Opret og se opgaver</h3>
+
+<table class="table">
+     <thead>
+    <tr>
+      <th scope="col">Opgave beskrivelse</th>   
+    </tr>
+  </thead>
+@foreach (var opg in opgaver)
+{
+    <tr>
+         <th>@opg.OpgBeskrivelse</th>
+    </tr>
+}
+</table>
+@code {
+
+     List<Opgave> opgaver = new List<Opgave>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        opgaver = await Http.GetFromJsonAsync<List<Opgave>>("HentOpgave");
+    }
+
+}

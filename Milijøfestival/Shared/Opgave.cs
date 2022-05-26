@@ -8,15 +8,15 @@ namespace Milijøfestival.Shared
 
         public string OpgBeskrivelse { get; set; }
 
-        public int AntalVagter { get; set; }
+        
 
 
         //constructor
-        public Opgave(int opgid, string opgbeskrivelse, int antalvagter)
+        public Opgave(int opgid, string opgbeskrivelse)
         {
             OpgId = opgid;
             OpgBeskrivelse = opgbeskrivelse;
-            AntalVagter = antalvagter;
+           
         }
     }
 }

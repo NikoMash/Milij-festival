@@ -34,8 +34,11 @@
         </div>
         <div class="col-md-8">
             <div class="form-group">
-                <label for="RolleId" class="control-label">Rolle (1 = frivillig, 2 = koordinator)</label>
-                <input for="RolleId" class="form-control" @bind="@nybruger.RolleId" />
+                <label for="RolleId" class="control-label">Rolle</label>
+                <select name="Rolle" @bind="@nybruger.RolleId">
+                    <option value="1">Frivillig</option>
+                    <option value="2">Koordinator</option>
+                </select>
             </div>
         </div>
     </div>
@@ -52,6 +55,7 @@
 
 
 @code {
+    // Laver ny metode til at forbinde med controller
     Bruger nybruger = new Bruger();
 
     private async Task save(string navn, string telefonnr, string email, DateTime fødselsdato, int rolleid)

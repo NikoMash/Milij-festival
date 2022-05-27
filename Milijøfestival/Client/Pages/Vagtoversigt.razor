@@ -6,8 +6,10 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col"><a href="">Opret opgave</a></th>
+            <th scope="col"><a href="Opretopgave">Opret og se opgaver</a></th>
+            <th scope="col"><a href="">Rediger opgave</a></th>
             <th scope="col"><a href="opretvagt">Opret vagt</a></th>
+            <th scope="col"><a href="rediger">Rediger vagt</a></th>
         </tr>
     <tr>
       <th scope="col">Hvor</th>
@@ -15,7 +17,7 @@
       <th scope="col">Til</th>
       <th scope="col">Book</th>
       <th scope="col">Fjern</th>
-      <th scope="col">Rediger</th>
+      
     </tr>
   </thead>
 <tbody>
@@ -27,8 +29,6 @@
          <th>@v.SlutTid</th>
          <th><button class="btn btn-primary"@onclick="()=>save(v.VagtId)">Vælg</button></th>
          <th><button class="btn btn-primary"@onclick="()=>save1(v.VagtId)">Fjern vagt</button></th>
-         <th><button class="btn btn-primary"@onclick="()=>save2(v.VagtId)">Rediger</button></th>
-
     </tr>
 }
 </tbody>
@@ -37,12 +37,6 @@
 
 
 @code {
-    Vagt opdatervagt = new Vagt();
-    private async Task save2(int vagtid2)
-    {
-        
-    }
-
     Vagt vagtslet = new Vagt();
     private async Task save1(int vagtid1)
     {

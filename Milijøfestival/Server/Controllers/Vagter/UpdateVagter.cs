@@ -28,10 +28,16 @@ namespace Milijøfestival.Server.Controllers
                 connection.Open();
                 try
                 {
-                    string update = "UPDATE vagt SET Sted=@sted, OpgId=@opgid, Afdeling=@afdeling, StartTid=@starttid, SlutTid=@sluttid WHERE vagtid=@vagtid";
+                    string update = "UPDATE vagt SET sted = @sted, opgid = @opgid, afdeling = @afdeling, starttid = @starttid, sluttid = @sluttid WHERE vagtid = @vagtid";
                     var vagtArgumenter = new
                     {
-                        vagtid = updatevagt.VagtId
+                        
+                        vagtid = updatevagt.VagtId,
+                        sted = updatevagt.Sted,
+                        opgid = updatevagt.OpgId,
+                        afdeling = updatevagt.Afdeling,
+                        starttid = updatevagt.StartTid,
+                        sluttid = updatevagt.SlutTid
                     };
                     await connection.ExecuteAsync(update, vagtArgumenter);
                 }

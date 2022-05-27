@@ -27,7 +27,7 @@
          <th>@v.SlutTid</th>
          <th><button class="btn btn-primary"@onclick="()=>save(v.VagtId)">Vælg</button></th>
          <th><button class="btn btn-primary"@onclick="()=>save1(v.VagtId)">Fjern vagt</button></th>
-         <th><a href="rediger">Rediger</a></th>
+         <th><button class="btn btn-primary"@onclick="()=>save2(v.VagtId)">Rediger</button></th>
 
     </tr>
 }
@@ -37,6 +37,12 @@
 
 
 @code {
+    Vagt opdatervagt = new Vagt();
+    private async Task save2(int vagtid2)
+    {
+        
+    }
+
     Vagt vagtslet = new Vagt();
     private async Task save1(int vagtid1)
     {

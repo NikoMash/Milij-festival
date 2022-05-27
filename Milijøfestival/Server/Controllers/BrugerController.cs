@@ -27,7 +27,7 @@ namespace Milijøfestival.Server.Controllers
             connection.Open();
             try
             {
-                string opretbruger = "INSERT INTO bruger (navn, telefonnr, email, fødselsdato, rolleid) VALUES ('@navn', @telefonnr, '@email', '@fødselsdato', @rolleid)";
+                string opretbruger = "INSERT INTO bruger (navn, telefonnr, email, fødselsdato, rolleid) VALUES (@navn, @telefonnr, @email, @fødselsdato, @rolleid)";
                 var brugerArgumenter = new
                 {
                     navn = nybruger.Navn,

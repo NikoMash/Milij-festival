@@ -6,63 +6,59 @@
 <h3>Opret Bruger</h3>
 
 <th>Indtast nødvendig info:</th>
-<table class="table">
-    <tr>
-
-        <div class=" row">
-        <td>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Navn" class="control-label">Fulde navn</label>
-                    <input for="Navn" class="form-control" @bind="@nybruger.Navn" />
-                </div>
+<form>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="Navn" class="control-label">Fulde navn</label>
+                <input for="Navn" class="form-control" @bind="@nybruger.Navn" />
             </div>
-        </td>
-        <td>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="TelefonNr">Telefon nummer</label>
-                    <input type="int" @bind="@nybruger.TelefonNr" />
-                </div>
-            </div>
-        </td>
-        <td>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Email">Email</label>
-                    <input type="email" @bind="@nybruger.Email" />
-                </div>
-            </div>
-        </td>
-        <td>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Fødselsdato">Fødselsdato</label>
-                    <input type="datetime" @bind="@nybruger.Fødselsdato" />
-                </div>
-            </div>
-        </td>
-        <td>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="RolleId">Rolle (1 = Frivillig, 2 = Koordinator)</label>
-                    <input type="number" @bind="@nybruger.RolleId" />
-                </div>
-            </div>
-        </td>
-
-        <td><button class="btn btn-primary" @onclick="()=>save(nybruger.Navn, nybruger.TelefonNr, nybruger.Email, nybruger.Fødselsdato, nybruger.RolleId)">Opret bruger</button></td>
         </div>
-    </tr>
-</table>
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="TelefonNr" class="control-label">Telefon nummer</label>
+                <input for="TelefonNr" class="form-control" @bind="@nybruger.TelefonNr" />
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="Email" class="control-label">Email</label>
+                <input for="Email" class="form-control" @bind="@nybruger.Email" />
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="Fødselsdato" class="control-label">Fødselsdato</label>
+                <input type="date" for="Fødselsdato" class="form-control" @bind="@nybruger.Fødselsdato" />
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="RolleId" class="control-label">Rolle</label>
+                <select name="Rolle" @bind="@nybruger.RolleId">
+                    <option value="1">Frivillig</option>
+                    <option value="2">Koordinator</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <button class="btn btn-primary" @onclick="()=>save(nybruger.Navn, nybruger.TelefonNr, nybruger.Email, nybruger.Fødselsdato, nybruger.RolleId)">Opret bruger</button>
+            </div>
+        </div>
+    </div>
+</form>
 
 
 
 
 @code {
+    // Laver ny metode til at forbinde med controller
     Bruger nybruger = new Bruger();
 
-    private async Task save(string navn, char telefonnr, string email, DateTime fødselsdato, int rolleid)
+    private async Task save(string navn, string telefonnr, string email, DateTime fødselsdato, int rolleid)
     {
         nybruger.Navn = navn;
         nybruger.TelefonNr = telefonnr;
@@ -71,5 +67,7 @@
         nybruger.RolleId = rolleid;
 
         var response = await Http.PutAsJsonAsync<Bruger>("Bruger", nybruger);
+
     }
+
 }

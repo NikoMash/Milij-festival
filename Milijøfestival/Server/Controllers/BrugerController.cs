@@ -18,16 +18,18 @@ namespace Milijøfestival.Server.Controllers
         {
             _logger = logger;
         }
-
+        // Forbinder til databasen
         NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
 
+        // Forbinder med Razorpage og henter intastet data
         public async Task<ActionResult<Bruger>> PutTask(Bruger nybruger)
         {
 
             connection.Open();
             try
             {
-                string opretbruger = "INSERT INTO bruger (navn, telefonnr, email, fødselsdato, rolleid) VALUES ('@navn', @telefonnr, '@email', '@fødselsdato', @rolleid)";
+                // laver quiry for at indsætte intastet data i databasen
+                string opretbruger = "INSERT INTO bruger (navn, telefonnr, email, fødselsdato, rolleid) VALUES (@navn, @telefonnr, @email, @fødselsdato, @rolleid)";
                 var brugerArgumenter = new
                 {
                     navn = nybruger.Navn,

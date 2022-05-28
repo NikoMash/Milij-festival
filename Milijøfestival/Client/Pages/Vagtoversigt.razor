@@ -37,20 +37,21 @@
 
 
 @code {
+    //Slet vagt
     Vagt vagtslet = new Vagt();
     private async Task save1(int vagtid1)
     {
         vagtslet.VagtId = vagtid1;
         var response = await Http.PutAsJsonAsync<Vagt>("SletVagt", vagtslet);
     }
-
+    //Vælg vagt / ertaget = true
     Vagt vagttaget = new Vagt();
     private async Task save(int vagtid)
     {
         vagttaget.VagtId = vagtid;
         var response = await Http.PutAsJsonAsync<Vagt>("VælgVagt", vagttaget);
     }
-
+    //Hent alle vagter
     List<Vagt> vagter = new List<Vagt>();
 
     protected override async Task OnInitializedAsync()

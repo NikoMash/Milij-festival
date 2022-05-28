@@ -2,6 +2,20 @@
 @page "/Opretopgave"
 @inject HttpClient Http
 <h3>Opret og se opgaver</h3>
+   <th>Indtast nødvendig info:</th>
+   <table class="table">
+       <tr>
+    <td>
+    
+            <label for="OpgBeskrivelse">Hvad omhandler vagten?</label>
+            <input type="string" @bind="@nyopg.OpgBeskrivelse" />
+     
+    </td>
+   
+     <td><button class="btn btn-primary"@onclick="()=>save(nyopg.OpgBeskrivelse)">Opret opgave</button></td>
+
+</tr>
+</table>
 
 <table class="table">
      <thead>
@@ -13,11 +27,20 @@
 {
     <tr>
          <th>@opg.OpgBeskrivelse</th>
+         <input type="checkbox"> I planlægning.
+         <input type="checkbox"> Udføres.
+         <input type="checkbox"> Udført.
     </tr>
 }
 </table>
 @code {
+    Opgave nyopg = new Opgave();
 
+    private async Task save(string opgavebeskrivelse)
+    {
+        nyopg.OpgBeskrivelse = opgavebeskrivelse;
+        var response = await Http.PutAsJsonAsync<Opgave>("InsertOpgaver", nyopg);
+    }
      List<Opgave> opgaver = new List<Opgave>();
 
     protected override async Task OnInitializedAsync()

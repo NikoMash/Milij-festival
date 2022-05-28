@@ -1,0 +1,34 @@
+﻿@using Milijøfestival.Shared;
+@inject HttpClient Http;
+<h3>RedigerOpgave</h3>
+
+@foreach (var opg in opgaver)
+{
+    <tr>
+         <th>@opg.OpgBeskrivelse</th>
+         <th><button class="btn btn-primary"@onclick="()=>saveid(opg.OpgId)">Vælg opgave</button></th>
+    </tr>
+}
+
+@code {
+    // Slet opgave når knappen trykkes
+    Opgave opgaveslet = new Opgave();
+    private async Task save1(int opgaveid)
+    {
+        opgaveslet.OpgId = opgaveid;
+        var response = await Http.PutAsJsonAsync<Opgave>("SletOgaver", opgaveslet);
+    }
+    //Gem opgave id når knapen trykkes 
+    Opgave opg = new Opgave();
+    private async Task saveid(int id)
+    {
+        opg.OpgId = id;
+    }
+    //Hent opgaver
+     List<Opgave> opgaver = new List<Opgave>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        opgaver = await Http.GetFromJsonAsync<List<Opgave>>("HentOpgave");
+    }
+}

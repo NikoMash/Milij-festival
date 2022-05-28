@@ -10,13 +10,13 @@
     <td>
     
             <label for="StartTid"> Start tidspunkt</label>
-            <input type="" @bind="@revagt.StartTid" />
+            <input type="datetime" @bind="@revagt.StartTid" />
      
     </td>
     <td>
    
             <label for="SlutTid"> Slut tidspunkt</label>
-            <input type="" @bind="@revagt.SlutTid" />
+            <input type="datetime" @bind="@revagt.SlutTid" />
    
     </td>
     <td>
@@ -57,7 +57,7 @@
 </table>
 
 @code {
-
+    //Hent vagter 
     List<Vagt> vagter = new List<Vagt>();
 
     protected override async Task OnInitializedAsync()
@@ -65,12 +65,14 @@
         vagter = await Http.GetFromJsonAsync<List<Vagt>>("HentVagter");
     }
 
+    //Gem vagt id når knap trykkes
     Vagt revagt = new Vagt();
     private async Task saveid(int id)
     {
         revagt.VagtId = id;
     }
 
+    //Gem redigerede vagt
     private async Task save(DateTime starttid, DateTime sluttid, string vagtafdeling, string vagtsted, int opgaveid, int id)
     {
         revagt.VagtId = id;

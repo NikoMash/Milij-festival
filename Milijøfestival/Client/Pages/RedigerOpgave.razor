@@ -10,7 +10,7 @@
     
             <label for="OpgBeskrivelse"> Opgavens beskrivelse</label>
             <input type="string" @bind="@opg.OpgBeskrivelse" />
-            <button class="btn btn-primary"@onclick="()=>savebeskrivelse(opg.OpgBeskrivelse)">Rediger opgave</button>
+            <button class="btn btn-primary"@onclick="()=>savebeskrivelse(opg.OpgId, opg.OpgBeskrivelse)">Rediger opgave</button>
 
      
     </td>
@@ -28,6 +28,16 @@
 </tbody>
 </table>
 @code {
+    //Gem redigerede opgave
+    Opgave opdateropgave = new Opgave();
+    private async Task savebeskrivelse(int id, string opgavebeskrivelse)
+    {
+        opdateropgave.OpgId = id;
+        opdateropgave.OpgBeskrivelse = opgavebeskrivelse;
+        
+        var response = await Http.PutAsJsonAsync<Opgave>("OpdaterOpgaver", opdateropgave);
+    }
+
     // Slet opgave når knappen trykkes
     Opgave opgaveslet = new Opgave();
     private async Task saveslet(int opgaveid)
@@ -35,9 +45,9 @@
         opgaveslet.OpgId = opgaveid;
         var response = await Http.PutAsJsonAsync<Opgave>("SletOpgaver", opgaveslet);
     }
-    
+
     //Hent opgaver
-     List<Opgave> opgaver = new List<Opgave>();
+    List<Opgave> opgaver = new List<Opgave>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -51,11 +61,4 @@
         opg.OpgId = id;
     }
 
-    //Gem redigerede opgave
-    private async Task savebeskrivelse(string opgavebeskrivelse)
-    {
-        opg.OpgBeskrivelse = opgavebeskrivelse;
-        
-        var response = await Http.PutAsJsonAsync<Opgave>("OpdaterOpgaver", opg);
-    }
 }

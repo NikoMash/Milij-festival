@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace Milijøfestival.Server.Controllers.Opgaver
 {
+    [ApiController]
+    [Route("[controller]")]
     public class OpdaterOpgaver : Controller
     {
         private readonly ILogger<OpdaterOpgaver> _logger;
@@ -19,7 +21,6 @@ namespace Milijøfestival.Server.Controllers.Opgaver
 
         NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
 
-        //Opdater table vagt colonne ertaget til true 
         public async Task<ActionResult<Opgave>> PutTask(Opgave opdateropgave)
         {
 

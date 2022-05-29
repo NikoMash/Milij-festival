@@ -1,34 +1,61 @@
 ﻿@using Milijøfestival.Shared;
 @inject HttpClient Http;
-<h3>RedigerOpgave</h3>
+@page "/redigeropgave"
+<h3>Rediger eller slet opgaver</h3>
+ <th>Indtast nødvendig info først, tryk derefter på opgaven du vil opdatere og tryk til sidst på "Rediger" knappen</th>
+   <table class="table">
+       <thead>
+       
+    <td>
+    
+            <label for="OpgBeskrivelse"> Opgavens beskrivelse</label>
+            <input type="string" @bind="@opg.OpgBeskrivelse" />
+            <button class="btn btn-primary"@onclick="()=>savebeskrivelse(opg.OpgBeskrivelse)">Rediger opgave</button>
 
+     
+    </td>
+       
+</thead>
+<tbody>
 @foreach (var opg in opgaver)
 {
     <tr>
          <th>@opg.OpgBeskrivelse</th>
          <th><button class="btn btn-primary"@onclick="()=>saveid(opg.OpgId)">Vælg opgave</button></th>
+         <th><button class="btn btn-primary"@onclick="()=>saveslet(opg.OpgId)">Fjern opgave</button></th>
     </tr>
 }
-
+</tbody>
+</table>
 @code {
     // Slet opgave når knappen trykkes
     Opgave opgaveslet = new Opgave();
-    private async Task save1(int opgaveid)
+    private async Task saveslet(int opgaveid)
     {
         opgaveslet.OpgId = opgaveid;
-        var response = await Http.PutAsJsonAsync<Opgave>("SletOgaver", opgaveslet);
+        var response = await Http.PutAsJsonAsync<Opgave>("SletOpgaver", opgaveslet);
     }
-    //Gem opgave id når knapen trykkes 
-    Opgave opg = new Opgave();
-    private async Task saveid(int id)
-    {
-        opg.OpgId = id;
-    }
+    
     //Hent opgaver
      List<Opgave> opgaver = new List<Opgave>();
 
     protected override async Task OnInitializedAsync()
     {
         opgaver = await Http.GetFromJsonAsync<List<Opgave>>("HentOpgave");
+    }
+
+    //Gem opgave id når knapen trykkes 
+    Opgave opg = new Opgave();
+    private async Task saveid(int id)
+    {
+        opg.OpgId = id;
+    }
+
+    //Gem redigerede opgave
+    private async Task savebeskrivelse(string opgavebeskrivelse)
+    {
+        opg.OpgBeskrivelse = opgavebeskrivelse;
+        
+        var response = await Http.PutAsJsonAsync<Opgave>("OpdaterOpgaver", opg);
     }
 }

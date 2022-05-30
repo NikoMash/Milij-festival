@@ -2,13 +2,22 @@
 @inject HttpClient Http
 @page "/Vagtoversigt"
 <h3>Vagt oversigt</h3>
+
 <table class="table">
     <thead>
+        <tr>
+            <th scope="col"><a href="Opretopgave">Opret og se opgaver</a></th>
+            <th scope="col"><a href="redigeropgave">Rediger opgave</a></th>
+            <th scope="col"><a href="opretvagt">Opret vagt</a></th>
+            <th scope="col"><a href="rediger">Rediger vagt</a></th>
+        </tr>
     <tr>
       <th scope="col">Hvor</th>
       <th scope="col">Fra</th>
       <th scope="col">Til</th>
       <th scope="col">Book</th>
+      <th scope="col">Fjern</th>
+      
     </tr>
   </thead>
 <tbody>
@@ -28,15 +37,21 @@
 
 
 @code {
+    //Slet vagt
+    Vagt vagtslet = new Vagt();
+    private async Task save1(int vagtid1)
+    {
+        vagtslet.VagtId = vagtid1;
+        var response = await Http.PutAsJsonAsync<Vagt>("SletVagt", vagtslet);
+    }
+    //Vælg vagt / ertaget = true
     Vagt vagttaget = new Vagt();
-
     private async Task save(int vagtid)
     {
         vagttaget.VagtId = vagtid;
-        var response = await Http.PutAsJsonAsync<Vagt>("UpdateVagt", vagttaget);
-
+        var response = await Http.PutAsJsonAsync<Vagt>("VælgVagt", vagttaget);
     }
-
+    //Hent alle vagter
     List<Vagt> vagter = new List<Vagt>();
 
     protected override async Task OnInitializedAsync()

@@ -10,39 +10,36 @@ namespace Milijøfestival.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class VagtController : Controller
+    public class VælgVagt : Controller
     {
-        private readonly ILogger<VagtController> _logger;
+        private readonly ILogger<VælgVagt> _logger;
 
-        public VagtController(ILogger<VagtController> logger)
+        public VælgVagt(ILogger<VælgVagt> logger)
         {
             _logger = logger;
         }
 
         NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
 
-        public async Task<ActionResult<Vagt>> PutTask(Vagt nyvagt)
+        //Opdater table vagt colonne ertaget til true 
+        public async Task<ActionResult<Vagt>> PutTask(Vagt vagttaget)
         {
 
             connection.Open();
             try
             {
-                string opretvagt = "INSERT INTO vagt (starttid, sluttid, afdeling, sted, opgid) VALUES (@starttid, @sluttid, @afdeling, @sted, @opgid)";
+                string updatevagt = "UPDATE vagt SET ertaget = true WHERE vagtid=@vagtid";
                 var vagtArgumenter = new
                 {
-                    starttid = nyvagt.StartTid,
-                    sluttid = nyvagt.SlutTid,
-                    afdeling = nyvagt.Afdeling,
-                    sted = nyvagt.Sted,
-                    opgid = nyvagt.OpgId
+                    vagtid = vagttaget.VagtId
                 };
-                await connection.ExecuteAsync(opretvagt, vagtArgumenter);
+                await connection.ExecuteAsync(updatevagt, vagtArgumenter);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
             }
-            return Ok(nyvagt);  
+            return Ok(vagttaget);  
         }
     }
 }

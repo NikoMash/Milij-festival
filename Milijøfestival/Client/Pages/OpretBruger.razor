@@ -66,6 +66,7 @@
         nybruger.Email = email;
         nybruger.Fødselsdato = fødselsdato;
         nybruger.RolleId = rolleid;
+        
 
         var response = await Http.PutAsJsonAsync<Bruger>("Bruger", nybruger);
 

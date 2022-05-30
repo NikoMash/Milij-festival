@@ -1,0 +1,89 @@
+﻿@page "/rediger"
+@using Milijøfestival.Shared;
+@inject HttpClient Http;
+<h3>Rediger vagt</h3>
+  
+   <th>Indtast nødvendig info først, tryk derefter på vagten du vil opdatere og til sidst tryk på "Rediger" knappen</th>
+   <table class="table">
+       <thead>
+       <tr>
+    <td>
+    
+            <label for="StartTid"> Start tidspunkt</label>
+            <input type="datetime" @bind="@revagt.StartTid" />
+     
+    </td>
+    <td>
+   
+            <label for="SlutTid"> Slut tidspunkt</label>
+            <input type="datetime" @bind="@revagt.SlutTid" />
+   
+    </td>
+    <td>
+    
+            <label for="Sted">Hvilken afdeling</label>
+            <input type="string" @bind="@revagt.Afdeling" />
+       
+    </td>
+    <td>
+    
+            <label for="Sted">Hvor er vagten</label>
+            <input type="string" @bind="@revagt.Sted" />
+        
+    </td>
+    <td>
+    
+            <label for="OpgId">Opgavens id</label>
+            <input type="int" @bind="@revagt.OpgId" />
+      
+    </td>
+     
+
+</tr>
+</thead>
+<tbody>
+@foreach (var revagt in vagter)
+{
+    <tr>
+         <th>@revagt.Sted</th>
+         <th>@revagt.StartTid</th>
+         <th>@revagt.SlutTid</th>
+         <th><button class="btn btn-primary"@onclick="()=>saveid(revagt.VagtId)">Vælg vagt</button></th>
+
+    </tr>
+}
+<th><button class="btn btn-primary"@onclick="()=>save(revagt.StartTid, revagt.SlutTid, revagt.Afdeling, revagt.Sted, revagt.OpgId, revagt.VagtId)">Rediger vagt</button></th>
+</tbody>
+</table>
+
+@code {
+    //Hent vagter 
+    List<Vagt> vagter = new List<Vagt>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        vagter = await Http.GetFromJsonAsync<List<Vagt>>("HentVagter");
+    }
+
+    //Gem vagt id når "Vælg vagt" knap trykkes
+    Vagt revagt = new Vagt();
+    private async Task saveid(int id)
+    {
+        revagt.VagtId = id;
+    }
+
+    //Gem redigerede vagt
+    private async Task save(DateTime starttid, DateTime sluttid, string vagtafdeling, string vagtsted, int opgaveid, int id)
+    {
+        revagt.VagtId = id;
+        revagt.StartTid = starttid;
+        revagt.SlutTid = sluttid;
+        revagt.Afdeling = vagtafdeling;
+        revagt.Sted = vagtsted;
+        revagt.OpgId = opgaveid;
+      
+
+        var response = await Http.PutAsJsonAsync<Vagt>("UpdateVagter", revagt);
+    }
+    
+}

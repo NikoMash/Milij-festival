@@ -22,7 +22,7 @@ namespace Milijøfestival.Server.Controllers
 
 
 
-        //Åben connection til azure server               
+        //Connection til database               
         NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
 
         //Henter en liste af vagter (SELECT / Read)

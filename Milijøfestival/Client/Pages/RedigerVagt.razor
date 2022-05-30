@@ -6,7 +6,7 @@
    <th>Indtast nødvendig info først, tryk derefter på vagten du vil opdatere og til sidst tryk på "Rediger" knappen</th>
   
    <table class="table">
-       <thead>
+       
        <tr>
     <td>
     
@@ -41,8 +41,9 @@
      
 
 </tr>
-</thead>
-<tbody>
+
+
+
 @foreach (var revagt in vagter)
 {
     <tr>
@@ -53,11 +54,16 @@
 
     </tr>
 }
-<form>
-<th><button class="btn btn-primary"@onclick="()=>save(revagt.StartTid, revagt.SlutTid, revagt.Afdeling, revagt.Sted, revagt.OpgId, revagt.VagtId)">Rediger vagt</button></th>
-</form>
-</tbody>
 </table>
+
+<form>
+    <table class="table">
+
+<th><button class="btn btn-primary"@onclick="()=>save(revagt.StartTid, revagt.SlutTid, revagt.Afdeling, revagt.Sted, revagt.OpgId, revagt.VagtId)">Rediger vagt</button></th>
+
+
+</table>
+</form>
 
 
 @code {

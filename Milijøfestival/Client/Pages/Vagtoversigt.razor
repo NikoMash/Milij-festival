@@ -21,16 +21,16 @@
     </tr>
   </thead>
 <tbody>
-@foreach (var v in vagter)
-{
-    <tr>
-         <th>@v.Sted</th>
-         <th>@v.StartTid</th>
-         <th>@v.SlutTid</th>
-         <th><button class="btn btn-primary"@onclick="()=>save(v.VagtId)">Vælg</button></th>
-         <th><button class="btn btn-primary"@onclick="()=>save1(v.VagtId)">Fjern vagt</button></th>
-    </tr>
-}
+    @foreach (var v in vagter)
+    {
+        <tr>
+             <th>@v.Sted</th>
+             <th>@v.StartTid</th>
+             <th>@v.SlutTid</th>
+             <th><button class="btn btn-primary"@onclick="()=>save(v.VagtId)">Vælg</button></th>
+
+        </tr>
+    }
 </tbody>
 </table>
 

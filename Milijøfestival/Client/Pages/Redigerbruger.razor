@@ -1,0 +1,68 @@
+﻿@using Milijøfestival.Shared;
+@inject HttpClient Http;
+@page "/Redigerbruger"
+<h3>Rediger bruger</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Navn</th>
+            <th scope="col">Telefonnr</th>
+            <th scope="col">Email</th>
+            <th scope="col">Fødselsdato</th>
+            <th scope="col">Rolleid</th>
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ko in bruger)
+        {
+            <tr>
+                <th>@ko.Navn</th>
+                <th>@ko.TelefonNr</th>
+                <th>@ko.Email</th>
+                <th>@ko.Fødselsdato</th>
+                <th>@ko.RolleId</th> 
+                <th><button class="btn btn-primary"@onclick="()=>saveslet(brugerid.BrugerId)">Fjern opgave</button></th>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@code {
+    //Gem redigerede bruger
+    Bruger opdaterbruger = new Bruger();
+    private async Task savebeskrivelse()
+    {
+        
+        
+        var response = await Http.PutAsJsonAsync<Bruger>("OpdaterBruger", opdaterbruger);
+    }
+
+    // Slet opgave når knappen trykkes
+    Bruger brugerslet = new Bruger();
+    private async Task saveslet(int brugerid)
+    {
+        brugerslet.BrugerId = brugerid;
+        var response = await Http.PutAsJsonAsync<Bruger>("SletOpgaver", brugerslet);
+    }
+
+    //Hent opgaver
+    //nyt objekt af typen bruger
+    List<Bruger> bruger = new List<Bruger>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        bruger = await Http.GetFromJsonAsync<List<Bruger>>("HentBruger");
+    }
+
+    //Gem opgave id når knapen trykkes 
+    Bruger brugerid = new Bruger();
+    private async Task saveid(int id)
+    {
+        brugerid.BrugerId = id;
+    }
+}

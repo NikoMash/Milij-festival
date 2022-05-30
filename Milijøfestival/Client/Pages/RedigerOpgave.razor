@@ -5,7 +5,7 @@
  <th>Indtast nødvendig info først, tryk derefter på opgaven du vil opdatere og tryk til sidst på "Rediger" knappen</th>
  <form>
    <table class="table">
-       <thead>
+       
        
     <td>
     
@@ -17,8 +17,8 @@
      
     </td>
        
-</thead>
-<tbody>
+
+
 @foreach (var opg in opgaver)
 {
     <tr>
@@ -27,7 +27,7 @@
          <th><button class="btn btn-primary"@onclick="()=>saveslet(opg.OpgId)">Fjern opgave</button></th>
     </tr>
 }
-</tbody>
+
 </table>
 </form>
 @code {

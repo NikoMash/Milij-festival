@@ -4,7 +4,7 @@ namespace Milijøfestival.Shared
     public class Bruger
     {
         //properties
-        public int BrugerId { get; }
+        public int BrugerId { get; set; }
         public string Navn { get; set; }
         public string TelefonNr { get; set; }
         public string Email { get; set; }

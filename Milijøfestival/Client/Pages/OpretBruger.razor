@@ -41,12 +41,6 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-8">
-            <div class="form-group">
-                <label for="Kompetence" class="control-label">Kompetence</label>
-                <input for="Kompetence" class="form-control" @bind="@nybruger.Email" />
-            </div>
-        </div>
     </div>
     <div class="row">
         <div class="col-md-4">
@@ -64,14 +58,14 @@
     // Laver ny metode til at forbinde med controller
     Bruger nybruger = new Bruger();
 
-    private async Task save(string navn, string telefonnr, string email, DateTime fødselsdato, int rolleid, string kompetence)
+    private async Task save(string navn, string telefonnr, string email, DateTime fødselsdato, int rolleid)
     {
         nybruger.Navn = navn;
         nybruger.TelefonNr = telefonnr;
         nybruger.Email = email;
         nybruger.Fødselsdato = fødselsdato;
         nybruger.RolleId = rolleid;
-        nybruger.Kompetence = kompetence;
+        
 
         var response = await Http.PutAsJsonAsync<Bruger>("Bruger", nybruger);
 

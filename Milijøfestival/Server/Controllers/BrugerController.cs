@@ -36,7 +36,7 @@ namespace Milijøfestival.Server.Controllers
                     telefonnr = nybruger.TelefonNr,
                     email = nybruger.Email,
                     fødselsdato = nybruger.Fødselsdato,
-                    rolleid = nybruger.RolleId
+                    rolleid = nybruger.RolleId,
                 };
                 await connection.ExecuteAsync(opretbruger, brugerArgumenter);
             }

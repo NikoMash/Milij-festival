@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Npgsql;
-using Milijøfestival.Shared;
 using System.Threading.Tasks;
 using Dapper;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Milijøfestival.Shared;
 
 namespace Milijøfestival.Server.Controllers
 {

@@ -2,8 +2,50 @@
 @inject HttpClient Http;
 @page "/Redigerbruger"
 <h3>Rediger bruger</h3>
+<th>Indtast nødvendig info først, tryk derefter på vagten du vil opdatere og til sidst tryk på "Rediger" knappen</th>
+  <form>
+   <table class="table">
+       
+       <tr>
+    <td>
+    
+            <label for="navn">Navn</label>
+            <input type="string" @bind="@rebruger.Navn"/>
+     
+    </td>
+    <td>
+   
+            <label for="TelefonNr">Telefon nummer</label>
+            <input type="string" @bind="@rebruger.TelefonNr"/>
+   
+    </td>
+    <td>
+    
+            <label for="Email">Email</label>
+            <input type="string" @bind="@rebruger.Email"/>
+       
+    </td>
+    <td>
+    
+            <label for="Fødselsdato">Fødselsdato</label>
+            <input type="date" @bind="@rebruger.Fødselsdato"/>
+        
+    </td>
+    <td>
+    
+            <label for="RolleId">Rolle id</label>
+            <input type="int" @bind="@rebruger.RolleId"/>
+      
+    </td>
+    <td>
+            <button class="btn btn-primary"@onclick="()=>saveopdatering(rebruger.BrugerId, rebruger.Navn, rebruger.TelefonNr, rebruger.Email, rebruger.Fødselsdato, rebruger.RolleId)">Rediger bruger</button>
+    </td>
+
+</tr>
+</table>
+</form>
 <table class="table">
-    <thead>
+    
         <tr>
             <th scope="col">Navn</th>
             <th scope="col">Telefonnr</th>
@@ -13,8 +55,11 @@
             
 
         </tr>
-    </thead>
-    <tbody>
+    </table>
+    
+
+    <table class="table">
+
         @foreach (var ko in bruger)
         {
             <tr>
@@ -23,46 +68,49 @@
                 <th>@ko.Email</th>
                 <th>@ko.Fødselsdato</th>
                 <th>@ko.RolleId</th> 
-                <th><button class="btn btn-primary"@onclick="()=>saveslet(brugerid.BrugerId)">Fjern opgave</button></th>
+                <th><button class="btn btn-primary"@onclick="()=>saveid(ko.BrugerId)">Vælg</button></th>
+                <th><button class="btn btn-primary"@onclick="()=>saveslet(ko.BrugerId)">Fjern bruger</button></th>
 
             </tr>
         }
-    </tbody>
+    
 </table>
 
 
 
 @code {
+      //Gem bruger id når knapen trykkes 
+    Bruger rebruger = new Bruger();
+    private async Task saveid(int id)
+    {
+        rebruger.BrugerId = id;
+    }
     //Gem redigerede bruger
-    Bruger opdaterbruger = new Bruger();
-    private async Task savebeskrivelse()
+    private async Task saveopdatering(int id, string navn, string telf, string email, DateTime fødselsdato, int rolleid)
     {
-        
-        
-        var response = await Http.PutAsJsonAsync<Bruger>("OpdaterBruger", opdaterbruger);
+        rebruger.Navn = navn;
+        rebruger.TelefonNr = telf;
+        rebruger.Email = email;
+        rebruger.Fødselsdato = fødselsdato;
+        rebruger.RolleId = rolleid;
+
+        var response = await Http.PutAsJsonAsync<Bruger>("OpdaterBruger", rebruger);
     }
 
-    // Slet opgave når knappen trykkes
+    // Slet bruger når knappen trykkes
     Bruger brugerslet = new Bruger();
-    private async Task saveslet(int brugerid)
+    private async Task saveslet(int sletid)
     {
-        brugerslet.BrugerId = brugerid;
-        var response = await Http.PutAsJsonAsync<Bruger>("SletOpgaver", brugerslet);
+        brugerslet.BrugerId = sletid;
+        var response = await Http.PutAsJsonAsync<Bruger>("SletBruger", brugerslet);
     }
 
-    //Hent opgaver
+    //Hent brugere
     //nyt objekt af typen bruger
     List<Bruger> bruger = new List<Bruger>();
 
     protected override async Task OnInitializedAsync()
     {
         bruger = await Http.GetFromJsonAsync<List<Bruger>>("HentBruger");
-    }
-
-    //Gem opgave id når knapen trykkes 
-    Bruger brugerid = new Bruger();
-    private async Task saveid(int id)
-    {
-        brugerid.BrugerId = id;
     }
 }

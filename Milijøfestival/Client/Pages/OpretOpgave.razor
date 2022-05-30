@@ -3,6 +3,7 @@
 @inject HttpClient Http
 <h3>Opret og se opgaver</h3>
    <th>Indtast nødvendig info:</th>
+   <form>
    <table class="table">
        <tr>
     <td>
@@ -10,19 +11,16 @@
             <label for="OpgBeskrivelse">Hvad omhandler vagten?</label>
             <input type="string" @bind="@nyopg.OpgBeskrivelse" />
      
-    </td>
-   
+    </td>  
      <td><button class="btn btn-primary"@onclick="()=>save(nyopg.OpgBeskrivelse)">Opret opgave</button></td>
-
 </tr>
 </table>
 
 <table class="table">
-     <thead>
     <tr>
       <th scope="col">Opgave beskrivelse</th>   
     </tr>
-  </thead>
+  
 @foreach (var opg in opgaver)
 {
     <tr>
@@ -33,6 +31,7 @@
     </tr>
 }
 </table>
+</form>
 @code {
     Opgave nyopg = new Opgave();
 

@@ -4,6 +4,7 @@
 <h3>Rediger vagt</h3>
   
    <th>Indtast nødvendig info først, tryk derefter på vagten du vil opdatere og til sidst tryk på "Rediger" knappen</th>
+   <form>
    <table class="table">
        <thead>
        <tr>
@@ -55,6 +56,7 @@
 <th><button class="btn btn-primary"@onclick="()=>save(revagt.StartTid, revagt.SlutTid, revagt.Afdeling, revagt.Sted, revagt.OpgId, revagt.VagtId)">Rediger vagt</button></th>
 </tbody>
 </table>
+</form>
 
 @code {
     //Hent vagter 

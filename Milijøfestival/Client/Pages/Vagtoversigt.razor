@@ -3,8 +3,8 @@
 @page "/Vagtoversigt"
 <h3>Vagt oversigt</h3>
 
-<table class="table">
-    <thead>
+<form>
+    <table class="table">
         <tr>
             <th scope="col"><a href="Opretopgave">Opret og se opgaver</a></th>
             <th scope="col"><a href="redigeropgave">Rediger opgave</a></th>
@@ -19,8 +19,8 @@
       <th scope="col">Fjern</th>
       
     </tr>
-  </thead>
-<tbody>
+ 
+
     @foreach (var v in vagter)
     {
         <tr>
@@ -31,8 +31,9 @@
              <th><button class="btn btn-primary"@onclick="()=>saveslet(v.VagtId)">Fjern</button></th>
         </tr>
     }
-</tbody>
+
 </table>
+</form>
 
 
 

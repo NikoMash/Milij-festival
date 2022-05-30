@@ -3,6 +3,7 @@
 @page "/redigeropgave"
 <h3>Rediger eller slet opgaver</h3>
  <th>Indtast nødvendig info først, tryk derefter på opgaven du vil opdatere og tryk til sidst på "Rediger" knappen</th>
+ <form>
    <table class="table">
        <thead>
        
@@ -10,6 +11,7 @@
     
             <label for="OpgBeskrivelse"> Opgavens beskrivelse</label>
             <input type="string" @bind="@opg.OpgBeskrivelse" />
+
             <button class="btn btn-primary"@onclick="()=>savebeskrivelse(opg.OpgId, opg.OpgBeskrivelse)">Rediger opgave</button>
 
      
@@ -27,6 +29,7 @@
 }
 </tbody>
 </table>
+</form>
 @code {
     //Gem redigerede opgave
     Opgave opdateropgave = new Opgave();

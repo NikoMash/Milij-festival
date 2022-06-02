@@ -40,6 +40,7 @@ namespace Milijøfestival.Server.Controllers
                 _logger.LogError(ex.Message);
             }
             return Ok(brugerslet);
+            
         }
     }
 }

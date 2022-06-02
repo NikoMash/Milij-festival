@@ -13,8 +13,10 @@
             <input type="string" @bind="@opg.OpgBeskrivelse" />
     </td>
             <button class="btn btn-primary"@onclick="()=>savebeskrivelse(opg.OpgId, opg.OpgBeskrivelse)">Rediger opgave</button>
-    
+    </table>
+</form>
 
+   <table class="table">
 
 @foreach (var opg in opgaver)
 {
@@ -28,7 +30,7 @@
 }
 
 </table>
-</form>
+
 @code {
     //Gem redigerede opgave
     Opgave opdateropgave = new Opgave();

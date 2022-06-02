@@ -19,7 +19,7 @@ namespace Milijøfestival.Server.Controllers
                 _logger = logger;
             }
 
-            NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
+            NpgsqlConnection connection = new NpgsqlConnection("UserID=systembruger; Password = TyQUmK3nz3xMw7Ua; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
 
             //Opdater table vagt colonne ertaget til true 
             public async Task<ActionResult<Vagt>> PutTask(Vagt updatevagt)

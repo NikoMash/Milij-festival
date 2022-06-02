@@ -19,7 +19,7 @@ namespace Milijøfestival.Server.Controllers.Opgaver
             _logger = logger;
         }
 
-        NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
+        NpgsqlConnection connection = new NpgsqlConnection("UserID=systembruger; Password = TyQUmK3nz3xMw7Ua; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
         public async Task<ActionResult<Opgave>> PutTask(Opgave nyopg)
         {
 

@@ -20,7 +20,7 @@ namespace Milijøfestival.Server.Controllers.Opgaver
         }
 
         //Connection til database               
-        NpgsqlConnection connection = new NpgsqlConnection("UserID=postgres; Password = Kulturkongerne2022; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
+        NpgsqlConnection connection = new NpgsqlConnection("UserID=systembruger; Password = TyQUmK3nz3xMw7Ua; Host = milijofestival.postgres.database.azure.com; Port = 5432; Database = milijofestival; ");
 
         //Henter en liste af vagter (SELECT / Read)
         public async Task<IEnumerable<Opgave>> Get()

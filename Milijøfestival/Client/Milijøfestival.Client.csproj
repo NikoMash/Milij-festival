@@ -28,5 +28,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Bookingside.razor" />
+    <Content Remove="wwwroot\billeder\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\billeder\" />
   </ItemGroup>
 </Project>
